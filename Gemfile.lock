@@ -21,7 +21,8 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: bcd6771c072aeddf9a5411f595642aeb05ef76cd
+  revision: 27bebf43c9ca7f7dace78f036e059dbfe282743f
+  branch: ha-feature-travis-core-pr-418
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.19)
@@ -276,7 +277,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.41)
     uuidtools (2.1.5)
-    virtus (1.0.3)
+    virtus (1.0.4)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
