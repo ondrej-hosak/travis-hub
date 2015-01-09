@@ -20,7 +20,8 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: 0d88007ac35ab7aeb44fb59e95a8873b0a5b69bf
+  revision: ce04a96c207688788d2b38f2795c6dc11843bf50
+  branch: ha-feature-elixir
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.19)
@@ -150,7 +151,7 @@ GEM
     journey (1.0.4)
     jruby-openssl (0.8.10)
       bouncy-castle-java (>= 1.5.0147)
-    json (1.8.1-java)
+    json (1.8.2-java)
     listen (1.3.1)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -178,9 +179,8 @@ GEM
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
-    parser (2.2.0.1)
+    parser (2.2.0.2)
       ast (>= 1.1, < 3.0)
-      slop (~> 3.4, >= 3.4.5)
     polyglot (0.3.5)
     powerpack (0.0.9)
     proxies (0.2.1)
