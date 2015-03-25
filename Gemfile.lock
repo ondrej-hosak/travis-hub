@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: 9ef018a267e94251dbaac54503a410baca71d1c6
+  revision: 8a77ef5ad9042d4a0edda62b1fc06dfb14d9c81d
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.19)
@@ -124,7 +124,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.1.3)
     docile (1.1.5)
-    equalizer (0.0.10)
+    equalizer (0.0.11)
     erubis (2.7.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -153,7 +153,7 @@ GEM
     ice_nine (0.11.1)
     jdbc-postgres (9.4.1200)
     journey (1.0.4)
-    jruby-openssl (0.9.6-java)
+    jruby-openssl (0.9.5-java)
     json (1.8.2-java)
     listen (1.3.1)
       rb-fsevent (>= 0.9.3)
@@ -241,7 +241,7 @@ GEM
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
-    ruby-progressbar (1.7.1)
+    ruby-progressbar (1.7.4)
     s3 (0.3.21)
       proxies (~> 0.2.0)
     safe_yaml (1.0.4)
@@ -298,7 +298,7 @@ DEPENDENCIES
   database_cleaner (~> 0.8.0)
   guard
   guard-rspec
-  jruby-openssl (~> 0.9.4)
+  jruby-openssl (= 0.9.5)
   march_hare (~> 2.7.0)
   metriks-librato_metrics
   micro_migrations
