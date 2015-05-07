@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/final-ci/travis-sidekiqs.git
+  revision: 21a2fee158e25252dd78f5fa31e81b4f6583be23
+  specs:
+    travis-sidekiqs (0.0.1)
+      sidekiq
+
+GIT
+  remote: git://github.com/final-ci/travis-support.git
+  revision: e496e14fb6bba39a0c1a8dcee9b935ce9e7de481
+  specs:
+    travis-support (0.0.1)
+
+GIT
   remote: git://github.com/getsentry/raven-ruby.git
   revision: 8ea61f94b7a9ece8ed69e796d326f10c7800127c
   specs:
@@ -19,8 +32,13 @@ GIT
     coder (0.4.0)
 
 GIT
-  remote: git://github.com/travis-ci/travis-core.git
-  revision: bec11090b4a85a43698817f94c3a6d9f0790fe32
+  remote: git://github.com/travis-ci/unlimited-jce-policy-jdk7.git
+  revision: 16230176b2b85f7c569550ce3544b273d77616ee
+  specs:
+    unlimited-jce-policy-jdk7 (0.1.0)
+
+PATH
+  remote: ../travis-core
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.19)
@@ -41,25 +59,6 @@ GIT
       thor (~> 0.14.6)
       travis-config (~> 0.1.0)
       virtus (~> 1.0.0)
-
-GIT
-  remote: git://github.com/travis-ci/travis-sidekiqs.git
-  revision: 21a2fee158e25252dd78f5fa31e81b4f6583be23
-  specs:
-    travis-sidekiqs (0.0.1)
-      sidekiq
-
-GIT
-  remote: git://github.com/travis-ci/travis-support.git
-  revision: e7f81093f83bd029cca6508739c5720e57e3d571
-  specs:
-    travis-support (0.0.1)
-
-GIT
-  remote: git://github.com/travis-ci/unlimited-jce-policy-jdk7.git
-  revision: 16230176b2b85f7c569550ce3544b273d77616ee
-  specs:
-    unlimited-jce-policy-jdk7 (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -244,7 +243,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
-    s3 (0.3.21)
+    s3 (0.3.22)
       proxies (~> 0.2.0)
     safe_yaml (1.0.4)
     sidekiq (3.3.3)
