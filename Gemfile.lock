@@ -1,17 +1,4 @@
 GIT
-  remote: git://github.com/final-ci/travis-sidekiqs.git
-  revision: 21a2fee158e25252dd78f5fa31e81b4f6583be23
-  specs:
-    travis-sidekiqs (0.0.1)
-      sidekiq
-
-GIT
-  remote: git://github.com/final-ci/travis-support.git
-  revision: e496e14fb6bba39a0c1a8dcee9b935ce9e7de481
-  specs:
-    travis-support (0.0.1)
-
-GIT
   remote: git://github.com/getsentry/raven-ruby.git
   revision: 8ea61f94b7a9ece8ed69e796d326f10c7800127c
   specs:
@@ -38,6 +25,14 @@ GIT
     unlimited-jce-policy-jdk7 (0.1.0)
 
 PATH
+  remote: ../stash-client
+  specs:
+    stash-client (0.1.0)
+      activesupport
+      addressable
+      faraday
+
+PATH
   remote: ../travis-core
   specs:
     travis-core (0.0.1)
@@ -59,6 +54,17 @@ PATH
       thor (~> 0.14.6)
       travis-config (~> 0.1.0)
       virtus (~> 1.0.0)
+
+PATH
+  remote: ../travis-sidekiqs
+  specs:
+    travis-sidekiqs (0.0.1)
+      sidekiq
+
+PATH
+  remote: ../travis-support
+  specs:
+    travis-support (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -193,7 +199,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
       spoon (~> 0.0)
-    pusher (0.14.4)
+    pusher (0.14.5)
       httpclient (~> 2.5)
       multi_json (~> 1.0)
       signature (~> 0.1.8)
@@ -300,7 +306,7 @@ DEPENDENCIES
   guard
   guard-rspec
   jruby-openssl (~> 0.8.8)
-  march_hare (~> 2.0.0.rc2)
+  march_hare (~> 2.0.0)
   metriks-librato_metrics
   micro_migrations
   mocha (~> 0.10.0)
@@ -311,6 +317,7 @@ DEPENDENCIES
   sentry-raven!
   sidekiq
   simplecov
+  stash-client!
   travis-config (~> 0.1.0)
   travis-core!
   travis-sidekiqs!
