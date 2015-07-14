@@ -2,15 +2,16 @@ source 'https://rubygems.org'
 
 ruby '1.9.3', engine: 'jruby', engine_version: '1.7.16' if ENV.key?('DYNO')
 
-#gem 'travis-core',        github: 'final-ci/travis-core'
-gem 'travis-core',        path: '../travis-core'
+gem 'travis-core',        github: 'final-ci/travis-core'
+#gem 'travis-core',        path: '../travis-core'
 gem 'unlimited-jce-policy-jdk7', github: 'travis-ci/unlimited-jce-policy-jdk7'
 
-#gem 'travis-support',     github: 'final-ci/travis-support'
-gem 'travis-support',     path: '../travis-support'
+gem 'travis-support',     github: 'final-ci/travis-support'
+#gem 'travis-support',     path: '../travis-support'
 gem 'travis-config',      '~> 0.1.0'
-#gem 'travis-sidekiqs',    github: 'final-ci/travis-sidekiqs', require: nil
-gem 'travis-sidekiqs',    path: '../travis-sidekiqs', require: nil
+gem 'travis-sidekiqs',    github: 'final-ci/travis-sidekiqs', require: nil
+#gem 'travis-sidekiqs',    path: '../travis-sidekiqs', require: nil
+gem 'sidekiq-status',     github: 'utgarda/sidekiq-status', ref: 'e77d5dc2ea0a249ccbbafead21ece59d6b8caf73', require: nil
 
 gem 'dalli'
 
@@ -47,4 +48,5 @@ group :development, :test do
 end
 
 #TODO - should be in travis-core.gemspec?
-gem 'stash-client',       path: '../stash-client'
+gem 'stash-client',       github: 'final-ci/stash-client'
+#gem 'stash-client',       path: '../stash-client'
