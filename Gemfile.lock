@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: git://github.com/final-ci/travis-sidekiqs.git
-  revision: c9e918e62c9272578b458f954dab30344a8ae091
+  revision: e3dce4adcd41d72b87cca903a7e419af17bc258c
   specs:
     travis-sidekiqs (0.0.1)
       sidekiq
