@@ -8,7 +8,8 @@ gem 'unlimited-jce-policy-jdk7', github: 'travis-ci/unlimited-jce-policy-jdk7'
 
 gem 'travis-support',     github: 'final-ci/travis-support'
 #gem 'travis-support',     path: '../travis-support'
-gem 'travis-config',      '~> 0.1.0'
+#gem 'travis-config',      '~> 0.1.0'
+gem 'travis-config',      github: 'final-ci/travis-config'
 gem 'travis-sidekiqs',    github: 'final-ci/travis-sidekiqs', require: nil
 #gem 'travis-sidekiqs',    path: '../travis-sidekiqs', require: nil
 gem 'sidekiq-status',     github: 'utgarda/sidekiq-status', ref: 'e77d5dc2ea0a249ccbbafead21ece59d6b8caf73', require: nil
