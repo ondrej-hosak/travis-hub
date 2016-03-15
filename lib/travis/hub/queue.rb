@@ -5,20 +5,27 @@ module Travis
     class Queue
       include Logging
 
-      def self.subscribe(queue, &handler)
-        new(queue, &handler).subscribe
+      def self.subscribe(context, queue, &handler)
+        new(context, queue, &handler).subscribe
       end
 
-      attr_reader :handler, :queue
+      attr_reader :handler, :queue, :context
 
-      def initialize(queue, &handler)
+      def initialize(context, queue, &handler)
+        @context = context
         @queue   = queue
         @handler = handler
       end
 
       def subscribe
         Travis.logger.info('[hub] subscribing to %p' % queue)
-        Travis::Amqp::Consumer.jobs(queue).subscribe(ack: true, &method(:receive))
+        case @context
+        when 'jobs'
+          Travis::Amqp::Consumer.jobs(queue).subscribe(ack: true, &method(:receive))
+        when 'builds'
+          options = { exchange: { name: 'reporting' } }
+          Travis::Amqp::Consumer.new("reporting.builds.#{queue}", options).subscribe(ack: true, &method(:receive))
+        end
         Travis.logger.info('[hub] subscribed')
       end
 
@@ -29,7 +36,7 @@ module Travis
             event = message.properties.type
             payload = decode(payload) || fail("no payload for #{event.inspect} (#{message.inspect})")
             Travis.uuid = payload.delete('uuid')
-            handler.call(event, payload)
+            handler.call(context, event, payload)
           end
         end
 
