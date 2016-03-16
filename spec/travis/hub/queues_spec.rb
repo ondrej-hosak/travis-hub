@@ -1,11 +1,38 @@
 describe Travis::Hub::Queue do
   let(:handler) { ->(*) {} }
-  let(:queue)   { Travis::Hub::Queue.new('builds', &handler) }
+  let(:queue)   { Travis::Hub::Queue.new('jobs', 'builds', &handler) }
   let(:payload) { '{ "foo": "bar", "uuid": "2d931510-d99f-494a-8c67-87feb05e1594" }' }
   let(:message) { stub('message', ack: nil, properties: stub('properties', type: 'job:finish')) }
 
   def receive
     queue.send(:receive, message, payload)
+  end
+
+  describe 'subscribe' do
+    let(:consumer) { mock('consumer') }
+
+    context 'when context parameter is jobs' do
+      before do
+        Travis::Amqp::Consumer.stubs(:jobs).returns(consumer)
+      end
+
+      it 'subscribes jobs consumer' do
+        consumer.expects(:subscribe)
+        queue.subscribe
+      end
+    end
+
+    context 'when context parameter is builds' do
+      before do
+        Travis::Amqp::Consumer.stubs(:builds).returns(consumer)
+      end
+
+      # skipped until we add Amqp::Consumer.builds to travis-support
+      xit 'subscribes builds consumer' do
+        consumer.expects(:subscribe)
+        queue.subscribe
+      end
+    end
   end
 
   describe 'receive' do
@@ -15,9 +42,21 @@ describe Travis::Hub::Queue do
     end
 
     describe 'with no exception being raised' do
-      it 'handles the event' do
-        handler.expects(:call).with('job:finish', 'foo' => 'bar')
-        receive
+      context 'when context parameter is jobs' do
+        it 'handles job event' do
+          handler.expects(:call).with('jobs', 'job:finish', 'foo' => 'bar')
+          receive
+        end
+      end
+
+      context 'when context parameter is builds' do
+        let(:queue)   { Travis::Hub::Queue.new('builds', 'builds', &handler) }
+        let(:message) { stub('message', ack: nil, properties: stub('properties', type: 'build:finish')) }
+
+        it 'handles build event' do
+          handler.expects(:call).with('builds', 'build:finish', 'foo' => 'bar')
+          receive
+        end
       end
 
       it 'acknowledges the message' do

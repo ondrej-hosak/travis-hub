@@ -45,30 +45,29 @@ module Travis
 
       def run
         enqueue_jobs
-        subscribe_to_queue
+        subscribe_to_queues
       end
 
       private
 
-        def subscribe_to_queue
-          Travis.logger.info('[hub] subscribing to queue %p' % queue)
-          Queue.subscribe(queue, &method(:handle))
+        def subscribe_to_queues
+          Travis.logger.info('[hub] subscribing to queue jobs.builds')
+          Queue.subscribe('jobs', 'builds', &method(:handle))
+          Travis.logger.info('[hub] subscribing to queue builds.builds')
+          Queue.subscribe('builds', 'builds', &method(:handle))
         end
 
-        def queue
-          'builds'
-        end
-
-        def handle(event, payload)
+        def handle(context, event, payload)
           Metriks.timer("hub.#{name}.handle").time do
             ActiveRecord::Base.cache do
-              handle_event(event, payload)
+              handle_event(context, event, payload)
             end
           end
         end
 
-        def handle_event(event, payload)
-          Travis.run_service(:update_job, event: event.to_s.split(':').last, data: payload)
+        def handle_job_event(context, event, payload)
+          service_name = (context == :jobs) ? :update_job : :update_ddtf_build
+          Travis.run_service(service_name, event: event.to_s.split(':').last, data: payload)
         end
 
         def enqueue_jobs

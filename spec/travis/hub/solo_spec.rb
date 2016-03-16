@@ -24,7 +24,7 @@ describe Travis::Hub::Solo do
 
   describe 'run' do
     before do
-      subject.stubs(:subscribe_to_queue)
+      subject.stubs(:subscribe_to_queues)
       subject.stubs(:enqueue_jobs)
     end
 
@@ -34,8 +34,24 @@ describe Travis::Hub::Solo do
     end
 
     it 'subscribes to the queue' do
-      subject.expects(:subscribe_to_queue)
+      subject.expects(:subscribe_to_queues)
       subject.run
+    end
+  end
+
+  describe 'subscribe_to_queue' do
+    before do
+      Travis::Hub::Queue.stubs(:subscribe)
+    end
+
+    it 'subscribes to the jobs queue' do
+      Travis::Hub::Queue.expects(:subscribe).with('jobs', 'builds')
+      subject.send(:subscribe_to_queues)
+    end
+
+    it 'subscribes to the builds queue' do
+      Travis::Hub::Queue.expects(:subscribe).with('builds', 'builds')
+      subject.send(:subscribe_to_queues)
     end
   end
 end
