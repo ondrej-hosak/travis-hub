@@ -54,4 +54,20 @@ describe Travis::Hub::Solo do
       subject.send(:subscribe_to_queues)
     end
   end
+
+  describe 'handle_event' do
+    context 'when context is jobs' do
+      it 'runs update_job service' do
+        Travis.expects(:run_service).with(:update_job, event: 'bar', data: 'baz')
+        subject.send(:handle_event, 'jobs', 'foo:bar', 'baz')
+      end
+    end
+
+    context 'when context is builds' do
+      it 'runs update_ddtf_build service' do
+        Travis.expects(:run_service).with(:update_ddtf_build, event: 'bar', data: 'baz')
+        subject.send(:handle_event, 'builds', 'foo:bar', 'baz')
+      end
+    end
+  end
 end

@@ -66,7 +66,7 @@ module Travis
         end
 
         def handle_event(context, event, payload)
-          service_name = (context == :jobs) ? :update_job : :update_ddtf_build
+          service_name = (context.to_sym == :jobs) ? :update_job : :update_ddtf_build
           Travis.run_service(service_name, event: event.to_s.split(':').last, data: payload)
         end
 
