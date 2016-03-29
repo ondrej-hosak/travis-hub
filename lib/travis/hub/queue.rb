@@ -23,8 +23,7 @@ module Travis
         when 'jobs'
           Travis::Amqp::Consumer.jobs(queue).subscribe(ack: true, &method(:receive))
         when 'builds'
-          options = { exchange: { name: 'reporting' } }
-          Travis::Amqp::Consumer.new("reporting.builds.#{queue}", options).subscribe(ack: true, &method(:receive))
+          Travis::Amqp::Consumer.builds(queue).subscribe(ack: true, &method(:receive))
         end
         Travis.logger.info('[hub] subscribed')
       end
