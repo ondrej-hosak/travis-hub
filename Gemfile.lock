@@ -250,6 +250,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.2.2)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -321,6 +323,7 @@ DEPENDENCIES
   micro_migrations
   mocha (~> 0.10.0)
   rails_12factor
+  redis-namespace
   rollout!
   rspec (~> 2.7.0)
   rubocop
@@ -335,3 +338,6 @@ DEPENDENCIES
   travis-support!
   unlimited-jce-policy-jdk7!
   webmock (~> 1.8.0)
+
+BUNDLED WITH
+   1.11.2

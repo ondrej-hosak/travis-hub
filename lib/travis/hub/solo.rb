@@ -44,7 +44,7 @@ module Travis
       end
 
       def run
-        enqueue_jobs
+        #enqueue_jobs TODO: uncoment this line before switching to final-ci version 2
         subscribe_to_queues
       end
 
