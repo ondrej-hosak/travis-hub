@@ -24,6 +24,7 @@ gem 'rails_12factor'
 # this is due to Invalid gemspec errors
 gem 'rollout',            github: 'jamesgolick/rollout', ref: 'v1.1.0'
 gem 'sidekiq'
+gem 'redis-namespace'
 
 gem 'march_hare',         '~> 2.0.0'
 gem 'jruby-openssl',      '~> 0.8.8', require: false
