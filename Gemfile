@@ -4,7 +4,6 @@ ruby '1.9.3', engine: 'jruby', engine_version: '1.7.16' if ENV.key?('DYNO')
 
 gem 'travis-core',        github: 'final-ci/travis-core'
 #gem 'travis-core',        path: '../travis-core'
-gem 'unlimited-jce-policy-jdk7', github: 'travis-ci/unlimited-jce-policy-jdk7'
 
 gem 'travis-support',     github: 'final-ci/travis-support'
 #gem 'travis-support',     path: '../travis-support'
