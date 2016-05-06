@@ -70,5 +70,12 @@ describe Travis::Hub::Solo do
         subject.send(:handle_event, 'builds', 'foo:bar', 'baz')
       end
     end
+
+    context 'when context is builds:message' do
+      it 'runs update_ddtf_build_message service' do
+        Travis.expects(:run_service).with(:update_ddtf_build_message, event: 'message', data: 'baz')
+        subject.send(:handle_event, 'builds', 'foo:message', 'baz')
+      end
+    end
   end
 end
