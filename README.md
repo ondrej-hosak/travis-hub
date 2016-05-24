@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/AVGTechnologies/travis-hub.svg?branch=master)](https://travis-ci.org/AVGTechnologies/travis-hub)
+
 # What is Travis Hub
 
 Travis Hub collects build logs, state changes and other information from Travis workers, then updates build logs
